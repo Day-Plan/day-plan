@@ -10,6 +10,11 @@ export default class AccountRouter {
             AccountController.createAccount
         );
 
+        router.delete(
+            '/:accountId',
+            AccountController.removeAccount
+        );
+
         return router;
     }
 }

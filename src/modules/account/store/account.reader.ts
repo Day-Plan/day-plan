@@ -4,8 +4,9 @@ import { AccountUtil } from "./account.util";
 
 export class AccountReader {
     static async findAccount(params: FindAccountParams): Promise<Account | null> {
+        const sanitisedParams = AccountUtil.sanitiseParams(params);
         const accountDocument = await AccountModel.findOne({
-            email: params.email,
+            ...sanitisedParams,
             status: AccountStatus.ACTIVE,
         });
 
